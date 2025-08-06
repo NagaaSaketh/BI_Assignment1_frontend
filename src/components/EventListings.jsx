@@ -2,7 +2,7 @@ import { useState } from "react";
 import useFetch from "../useFetch";
 import { Link } from "react-router-dom";
 const EventListings = () => {
-  const { data, loading, error } = useFetch("http://localhost:3000/events");
+  const { data, loading, error } = useFetch("https://bi-assignment-backend-gamma.vercel.app/events");
   // console.log(data);
   const [events, setEvents] = useState("Both");
   const filteredEvents =
