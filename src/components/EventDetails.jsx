@@ -5,7 +5,7 @@ const EventDetails = () => {
   const { eventId } = useParams();
   console.log(eventId);
   const { data, loading, error } = useFetch(
-    `http://localhost:3000/events/${eventId}`
+    `https://bi-assignment-backend-gamma.vercel.app/events/${eventId}`
   );
   console.log(data);
   return (
