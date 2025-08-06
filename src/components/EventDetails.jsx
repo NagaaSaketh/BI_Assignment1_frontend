@@ -13,11 +13,13 @@ const EventDetails = () => {
       <Header />
       <div>
         {loading ? (
-  <p className="text-center">Loading...</p>
-) : error ? (
-  <p className="text-center">An error occurred while fetching event details</p>
-) : data ? (
-<div className="container">
+          <p className="text-center">Loading...</p>
+        ) : error ? (
+          <p className="text-center">
+            An error occurred while fetching event details
+          </p>
+        ) : data ? (
+          <div className="container">
             <div className="row">
               <div className="col-md-8">
                 <h2 className="fw-bold">{data.title}</h2>
@@ -59,11 +61,42 @@ const EventDetails = () => {
                 <div className="card">
                   <div className="card-body">
                     <p>
-                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" className="lucide lucide-clock-icon lucide-clock"><path d="M12 6v6l4 2"/><circle cx="12" cy="12" r="10"/></svg>
-                     {data.date} at {data.time} to{" "}
-                     {data.date} at {data.endTime}
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="15"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="1"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        className="lucide lucide-clock-icon lucide-clock"
+                      >
+                        <path d="M12 6v6l4 2" />
+                        <circle cx="12" cy="12" r="10" />
+                      </svg>
+                      {data.date} at {data.time} to {data.date} at{" "}
+                      {data.endTime}
                     </p>
-                    <p><svg xmlns="http://www.w3.org/2000/svg" width="18" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="0.5" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-map-pin-icon lucide-map-pin"><path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0"/><circle cx="12" cy="10" r="3"/></svg> {data.location}</p>
+                    <p>
+                      <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="18"
+                        height="24"
+                        viewBox="0 0 24 24"
+                        fill="none"
+                        stroke="currentColor"
+                        stroke-width="0.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        class="lucide lucide-map-pin-icon lucide-map-pin"
+                      >
+                        <path d="M20 10c0 4.993-5.539 10.193-7.399 11.799a1 1 0 0 1-1.202 0C9.539 20.193 4 14.993 4 10a8 8 0 0 1 16 0" />
+                        <circle cx="12" cy="10" r="3" />
+                      </svg>{" "}
+                      {data.location}
+                    </p>
                     <p>₹{data.eventFee}</p>
                   </div>
                 </div>
@@ -78,7 +111,13 @@ const EventDetails = () => {
                         <div className="col-md-6">
                           <div className="card text-center">
                             <img
-                              style={{ width: "100px", height:"100px", padding: "20px",objectFit: "cover",objectPosition: "center" }}
+                              style={{
+                                width: "100px",
+                                height: "100px",
+                                padding: "20px",
+                                objectFit: "cover",
+                                objectPosition: "center",
+                              }}
                               className="rounded-circle mx-auto"
                               src={obj.photo}
                               alt="photo"
@@ -96,11 +135,9 @@ const EventDetails = () => {
               </div>
             </div>
           </div>
-) : (
-  <p>No Event Found.</p>
-)}
-          
-
+        ) : (
+          <p>No Event Found.</p>
+        )}
       </div>
     </div>
   );
