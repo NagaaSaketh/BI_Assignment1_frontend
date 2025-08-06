@@ -12,10 +12,12 @@ const EventDetails = () => {
     <div>
       <Header />
       <div>
-        {loading && <p className="text-center">Loading...</p>}
-        {error && <p className="text-center">An error occurred while fetching event details</p>}
-        {data ? (
-          <div className="container">
+        {loading ? (
+  <p className="text-center">Loading...</p>
+) : error ? (
+  <p className="text-center">An error occurred while fetching event details</p>
+) : data ? (
+<div className="container">
             <div className="row">
               <div className="col-md-8">
                 <h2 className="fw-bold">{data.title}</h2>
@@ -94,9 +96,11 @@ const EventDetails = () => {
               </div>
             </div>
           </div>
-        ) : (
-          <p>No Event Found.</p>
-        )}
+) : (
+  <p>No Event Found.</p>
+)}
+          
+
       </div>
     </div>
   );
