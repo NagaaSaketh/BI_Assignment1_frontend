@@ -4,8 +4,11 @@ import { Link } from "react-router-dom";
 const EventListings = () => {
   const { data, loading, error } = useFetch("http://localhost:3000/events");
   // console.log(data);
-  const [events,setEvents] = useState("Both");
-  const filteredEvents = events === "Both" ? data : data?.filter((event)=>event.eventType === events)
+  const [events, setEvents] = useState("Both");
+  const filteredEvents =
+    events === "Both"
+      ? data
+      : data?.filter((event) => event.eventType === events);
   return (
     <main className="container">
       <div className="d-flex align-items-center justify-content-between mt-3">
@@ -14,7 +17,12 @@ const EventListings = () => {
         </div>
         <div>
           <label htmlFor="eventsDropdown">
-            <select onChange={(event)=>setEvents(event.target.value)} className="form-select" name="events" id="eventsDropdown">
+            <select
+              onChange={(event) => setEvents(event.target.value)}
+              className="form-select"
+              name="events"
+              id="eventsDropdown"
+            >
               <option value="Both">Select Event Type</option>
               <option value="Online Event">Online</option>
               <option value="Offline Event">Offline</option>
@@ -23,7 +31,7 @@ const EventListings = () => {
           </label>
         </div>
       </div>
-     <div>
+      <div>
         {loading ? (
           <p>Loading...</p>
         ) : error ? (
@@ -55,9 +63,9 @@ const EventListings = () => {
                             {event.date} • {event.time}
                           </small>
                         </p>
-                        <Link 
-                          to={`/events/${event._id}`} 
-                          style={{ textDecoration: "none" }} 
+                        <Link
+                          to={`/events/${event._id}`}
+                          style={{ textDecoration: "none" }}
                           className="pt-2 fs-5 fw-bold text-dark"
                         >
                           {event.title}
