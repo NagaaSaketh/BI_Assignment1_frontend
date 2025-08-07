@@ -5,12 +5,39 @@ const EventListings = () => {
   const { data, loading, error } = useFetch("https://bi-assignment-backend-gamma.vercel.app/events");
   // console.log(data);
   const [events, setEvents] = useState("Both");
-  const filteredEvents =
+  const [query,setQuery] = useState("");
+  let filteredEvents =
     events === "Both"
       ? data
       : data?.filter((event) => event.eventType === events);
+  if(query){
+    filteredEvents = filteredEvents.filter((obj)=>obj.title.toLowerCase().includes(query.toLowerCase()))
+  }
   return (
     <main className="container">
+      <div
+        className="d-flex align-items-center justify-content-between pb-3"
+        style={{ height: "100px" }}
+      >
+        <img
+          className="img-fluid"
+          style={{ width: "100px", height: "auto" }}
+          src="https://cdn.worldvectorlogo.com/logos/meetup-1.svg"
+          alt="meetup-logo"
+        />
+        <div className="position-relative" style={{width: "200px"}}>
+            
+          <input
+            type="text"
+            className="form-control"
+            placeholder="Search by title and tags"
+            id="searchBox"
+            value={query}
+            onChange={(e)=>setQuery(e.target.value)}
+          />
+        </div>
+      </div>
+      <hr />
       <div className="d-flex align-items-center justify-content-between mt-3">
         <div>
           <h1 className="fw-bolder">Meetup Events</h1>
